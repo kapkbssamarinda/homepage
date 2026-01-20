@@ -45,3 +45,75 @@
     outline: 2px solid #00447b;
     outline-offset: 2px;
 }
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Dark Mode Scrollbar */
+.dark ::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* Glass Effect Utility */
+.glass-effect {
+    /* Default (Light) */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Dark Mode Glass Override */
+.dark .glass-effect {
+    background: rgba(15, 23, 42, 0.85); /* Slate-900 dengan transparansi */
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Animations */
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+*:focus-visible {
+    outline: 2px solid #00447b;
+    outline-offset: 2px;
+}
+.dark *:focus-visible {
+    outline: 2px solid #60a5fa; /* Warna biru lebih terang di mode gelap */
+}
