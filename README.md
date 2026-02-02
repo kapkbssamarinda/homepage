@@ -48,3 +48,16 @@ Halaman portal ini dibangun menggunakan teknologi web standar:
 │       └── logo tanpa teks.png
 ├── index.html        # Halaman utama portal
 └── (file pendukung lainnya seperti style.css jika terpisah)
+```
+🚀 Cara Penggunaan (Lokal)
+Jika Anda ingin menjalankan atau memodifikasi portal ini di komputer lokal Anda:
+
+Clone repositori ini:
+1. git clone [https://github.com/kapkbssamarinda/homepage.git](https://github.com/kapkbssamarinda/homepage.git)
+2. Buka folder proyek: Masuk ke direktori tempat Anda menyimpan hasil clone.
+3. Jalankan: Cukup buka file index.html menggunakan browser web modern (Chrome, Firefox, Edge, dll).
+
+👥 Kredit
+Pengembang: Internal Development - KAP Kuncara Budi Santosa & Rekan (Cabang Samarinda) Kontributor Utama: Viany Ramadhany
+
+© KAP Kuncara Budi Santosa & Rekan. All Rights Reserved.
