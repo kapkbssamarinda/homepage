@@ -49,7 +49,7 @@ Halaman portal ini dibangun menggunakan teknologi web standar:
 ├── index.html        # Halaman utama portal
 └── (file pendukung lainnya seperti style.css jika terpisah)
 ```
-🚀 Cara Penggunaan (Lokal)
+## 🚀 Cara Penggunaan (Lokal)
 Jika Anda ingin menjalankan atau memodifikasi portal ini di komputer lokal Anda:
 
 Clone repositori ini:
