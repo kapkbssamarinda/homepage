@@ -58,7 +58,7 @@ Clone repositori ini:
 2. Buka folder proyek: Masuk ke direktori tempat Anda menyimpan hasil clone.
 3. Jalankan: Cukup buka file index.html menggunakan browser web modern (Chrome, Firefox, Edge, dll).
 
-👥 Kredit
+## 👥 Kredit
 Pengembang: Internal Development - KAP Kuncara Budi Santosa & Rekan (Cabang Samarinda) Kontributor Utama: Viany Ramadhany
 
 © KAP Kuncara Budi Santosa & Rekan. All Rights Reserved.
