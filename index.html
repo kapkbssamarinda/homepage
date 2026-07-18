@@ -1,338 +1,166 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00447b">
-    <link rel="apple-touch-icon" href="asset/icon/icon-192.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Apps - KAP Kuncara Budi Santosa</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Portal Alat Audit — KAP Kuncara Budi Santosa & Rekan</title>
+    <meta name="description" content="Portal alat internal tim audit KAP Kuncara Budi Santosa & Rekan, Cabang Samarinda. Sampling, pembersihan data, konfirmasi, dan alat perpajakan dalam satu tempat.">
+    <meta name="theme-color" content="#00447b" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <meta name="color-scheme" content="light dark">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class', // <--- PENTING: Mengaktifkan mode gelap berbasis class
-            theme: {
-                extend: {
-                    colors: {
-                        kapBlue: '#00447b',
-                        kapRed: '#c1272d',
-                        kapYellow: '#fbb03b',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="asset/icon/icon-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <script>
+        // Set theme before first paint to avoid a flash of the wrong theme.
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (t !== 'light' && t !== 'dark') {
+                    t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.dataset.theme = t;
+            } catch (e) { /* localStorage blocked; fall back to light */ }
+        })();
+    </script>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased overflow-x-hidden selection:bg-kapBlue selection:text-white transition-colors duration-300">
+<body>
 
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-kapBlue/10 dark:bg-kapBlue/20 rounded-full blur-3xl animate-blob"></div>
-        <div class="absolute top-[20%] right-[-10%] w-96 h-96 bg-kapYellow/10 dark:bg-kapYellow/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-10%] left-[20%] w-96 h-96 bg-kapRed/10 dark:bg-kapRed/10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
-    </div>
+    <!-- Icon sprite (Lucide-style). Referenced via <use>. -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+        <symbol id="i-sampling" viewBox="0 0 24 24"><path d="M21 12A9 9 0 1 1 12 3v9z"/><path d="M12 3a9 9 0 0 1 9 9h-9z"/></symbol>
+        <symbol id="i-clean" viewBox="0 0 24 24"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7M5 11l9 9"/></symbol>
+        <symbol id="i-table" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 3v18M3 9h18M3 15h18"/></symbol>
+        <symbol id="i-filecheck" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5M9 15l2 2 4-4"/></symbol>
+        <symbol id="i-note" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></symbol>
+        <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2 20 7H4Z"/></symbol>
+        <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65M22 12.65l-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+        <symbol id="i-calc" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14v4M8 18h.01M12 18h.01"/></symbol>
+    </svg>
 
-    <nav class="fixed w-full z-50 transition-all duration-300 glass-effect border-b border-white/20 dark:border-slate-700/50" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img class="h-20 w-auto" src="asset/icon/LOGO.png" alt="KAP Logo">
-                </div>
-                
-                <div class="flex items-center gap-4">
-                    <button id="theme-toggle" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all flex items-center justify-center focus:outline-none shadow-sm">
-                        <i class="fas fa-sun text-lg transition-transform duration-500" id="theme-icon"></i>
-                    </button>
+    <div class="backdrop" aria-hidden="true"></div>
 
-                    <div class="hidden md:block">
-                        <a href="https://maps.app.goo.gl/Us9m17vRAyxCeR8V7" target="_blank" 
-                        class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-kapBlue/10 dark:bg-kapBlue/20 text-kapBlue dark:text-blue-300 border border-kapBlue/20 hover:bg-kapBlue/20 transition-colors duration-300">
-                            <i class="fas fa-map-pin mr-2"></i> Cabang Samarinda
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <header class="site-head">
+        <a class="brand" href="#top" aria-label="KAP Kuncara Budi Santosa &amp; Rekan — ke atas">
+            <img src="asset/icon/LOGO.png" alt="" width="132" height="44" class="brand-logo">
+        </a>
+        <div class="head-actions">
+            <a class="chip" href="https://maps.app.goo.gl/Us9m17vRAyxCeR8V7" target="_blank" rel="noopener">
+                <svg class="icon icon-sm"><use href="#i-pin"/></svg>
+                <span class="chip-label">Cabang Samarinda</span>
+            </a>
+            <button id="theme-toggle" class="icon-btn" type="button" aria-label="Ganti tema gelap/terang" aria-pressed="false">
+                <svg class="icon"><use href="#i-sun"/></svg>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-20 px-4 text-center">
-        <div data-aos="fade-down" data-aos-duration="1000">
-            <div class="relative w-24 h-24 mx-auto mb-6 p-1 rounded-2xl bg-gradient-to-tr from-kapBlue via-kapYellow to-kapRed shadow-xl">
-                <div class="w-full h-full bg-white rounded-xl flex items-center justify-center overflow-hidden">
-                    <img src="asset/icon/logo tanpa teks.png" alt="Icon" class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-500">
-                </div>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-serif font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
-                Audit Tools <span class="text-transparent bg-clip-text bg-gradient-to-r from-kapBlue to-kapRed dark:from-blue-400 dark:to-red-400">Portal</span>
-            </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                Platform terintegrasi untuk mendukung efisiensi audit tim KAP Kuncara Budi Santosa & Rekan.
-                Pilih kategori alat di bawah ini untuk memulai.
+    <main id="top">
+        <section class="hero">
+            <p class="hero-meta">Portal Internal · Tim Audit</p>
+            <h1 class="hero-title">Alat kerja audit,<br>dalam satu tempat.</h1>
+            <p class="hero-lede">
+                Delapan aplikasi untuk mendukung efisiensi tim KAP Kuncara Budi Santosa &amp; Rekan —
+                dari sampling dan pembersihan data hingga konfirmasi dan perpajakan.
             </p>
-        </div>
-    </section>
+        </section>
 
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 space-y-6">
-
-        <div class="glass-card rounded-3xl border border-white/50 dark:border-slate-700 overflow-hidden transition-all duration-300 shadow-lg dark:shadow-none bg-white/40 dark:bg-slate-800/50" data-aos="fade-up" data-aos-delay="100">
-            
-            <button onclick="toggleSection('mus-content', 'mus-icon')" class="w-full p-6 flex items-center justify-between bg-white/40 dark:bg-slate-800/40 hover:bg-white/60 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-left focus:outline-none">
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-kapBlue to-blue-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-blue-900/20">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">Monetary Unit Sampling</h2>
-                        <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 mt-1">Metode sampling statistik (Standard & Template).</p>
-                    </div>
-                </div>
-                <i id="mus-icon" class="fas fa-chevron-down text-slate-400 text-xl transition-transform duration-300"></i>
-            </button>
-
-            <div id="mus-content" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white/30 dark:bg-slate-900/30">
-                <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-white/20 dark:border-slate-700">
-                    
-                    <div class="bg-white/70 dark:bg-slate-800 p-6 rounded-2xl border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-kapBlue dark:text-blue-300 flex items-center justify-center text-xl">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <span class="text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-800">VER 1.0</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Standard Sampling</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow leading-relaxed">Perhitungan sampling unit moneter dasar untuk populasi tunggal.</p>
-                        <div class="flex gap-2">
-                            <button onclick="showInfo('v1')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"><i class="fas fa-info-circle text-lg"></i></button>
-                            <a href="https://kapkbssamarinda.github.io/MUS-V1/Jasa.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-kapBlue text-white font-medium hover:bg-blue-800 transition-all">
-                                Buka Apps <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/70 dark:bg-slate-800 p-6 rounded-2xl border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col relative overflow-hidden">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 flex items-center justify-center text-xl">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
-                            <span class="text-xs font-bold bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 px-3 py-1 rounded-full border border-yellow-200 dark:border-yellow-800">VER 2.0</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Multi-Account Template</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow leading-relaxed">Upload template Excel untuk sampling banyak akun sekaligus.</p>
-                        <div class="flex gap-2">
-                            <button onclick="showInfo('v2')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"><i class="fas fa-info-circle text-lg"></i></button>
-                            <a href="https://kapkbssamarinda.github.io/MUS-Mode-Template/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-gradient-to-r from-kapYellow to-orange-500 text-white font-medium hover:shadow-lg transition-all">
-                                Buka Apps <i class="fas fa-bolt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+        <section class="group" aria-labelledby="grp-data">
+            <div class="group-head">
+                <span class="dot" data-cat="data"></span>
+                <h2 id="grp-data">Data &amp; Sampling</h2>
+                <span class="group-count">3 alat</span>
             </div>
-        </div>
-
-        <div class="glass-card rounded-3xl border border-white/50 dark:border-slate-700 overflow-hidden transition-all duration-300 shadow-lg dark:shadow-none bg-white/40 dark:bg-slate-800/50" data-aos="fade-up" data-aos-delay="200">
-            
-            <button onclick="toggleSection('cleaner-content', 'cleaner-icon')" class="w-full p-6 flex items-center justify-between bg-white/40 dark:bg-slate-800/40 hover:bg-white/60 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-left focus:outline-none">
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-kapRed to-rose-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-red-900/20">
-                        <i class="fas fa-broom"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">Data Cleaner</h2>
-                        <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 mt-1">Tools pembersihan dan restrukturisasi data General Ledger.</p>
-                    </div>
-                </div>
-                <i id="cleaner-icon" class="fas fa-chevron-down text-slate-400 text-xl transition-transform duration-300"></i>
-            </button>
-
-            <div id="cleaner-content"
-                class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white/30 dark:bg-slate-900/30">
-                <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-white/20 dark:border-slate-700">
-
-                    <div
-                        class="bg-white/70 dark:bg-slate-800 p-6 rounded-2xl border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 text-kapRed dark:text-red-300 flex items-center justify-center text-xl">
-                                <i class="fas fa-file-excel"></i>
-                            </div>
-                            <span
-                                class="text-xs font-bold bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-3 py-1 rounded-full border border-red-200 dark:border-red-800">ACCURATE</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Accurate™ Cleaner</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 flex-grow leading-relaxed">Membersihkan format
-                            data raw Excel Accurate.</p>
-
-                        <div
-                            class="mb-3 p-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800/30 rounded-lg flex gap-2 items-start">
-                            <i class="fas fa-info-circle text-amber-600 dark:text-amber-400 text-xs mt-0.5"></i>
-                            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight">
-                                Jika aplikasi tertidur, silakan klik tombol <span
-                                    class="font-bold text-amber-700 dark:text-amber-400">"Yes, get this app back up"</span> pada
-                                layar Streamlit.
-                            </p>
-                        </div>
-
-                        <div class="flex gap-2">
-                            <button onclick="showInfo('cleaner')"
-                                class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"><i
-                                    class="fas fa-info-circle text-lg"></i></button>
-                            <a href="https://kapkbssamarinda-cleandata-accurate.streamlit.app/" target="_blank"
-                                class="flex-1 text-center py-2.5 px-4 rounded-xl bg-kapRed text-white font-medium hover:bg-red-700 transition-all">
-                                Buka Apps <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div
-                        class="bg-white/70 dark:bg-slate-800 p-6 rounded-2xl border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 flex items-center justify-center text-xl">
-                                <i class="fas fa-file-invoice-dollar"></i>
-                            </div>
-                            <span
-                                class="text-xs font-bold bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-800">MYOB</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">MYOB GL Helper</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 flex-grow leading-relaxed">Merestrukturisasi data
-                            export General Ledger MYOB.</p>
-
-                        <div
-                            class="mb-3 p-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800/30 rounded-lg flex gap-2 items-start">
-                            <i class="fas fa-info-circle text-amber-600 dark:text-amber-400 text-xs mt-0.5"></i>
-                            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight">
-                                Jika aplikasi tertidur, silakan klik tombol <span
-                                    class="font-bold text-amber-700 dark:text-amber-400">"Yes, get this app back up"</span> pada
-                                layar Streamlit.
-                            </p>
-                        </div>
-
-                        <div class="flex gap-2">
-                            <button onclick="showInfo('myob')"
-                                class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"><i
-                                    class="fas fa-info-circle text-lg"></i></button>
-                            <a href="https://kapkbssamarinda-cleandata-myob.streamlit.app/" target="_blank"
-                                class="flex-1 text-center py-2.5 px-4 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-700 transition-all">
-                                Buka Apps <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="grid">
+                <a class="tool" data-cat="data" href="https://kapkbssamarinda.github.io/MUS-Mode-Template/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-sampling"/></svg></span>
+                    <h3>Monetary Unit Sampling</h3>
+                    <p>Upload template Excel untuk sampling statistik banyak akun sekaligus.</p>
+                    <span class="tool-link"><span class="host">MUS-Mode-Template</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+                <a class="tool" data-cat="data" href="https://gl-cleaner-eight.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-clean"/></svg></span>
+                    <h3>GL (Buku Besar) Cleaner</h3>
+                    <p>Membersihkan dan merestrukturisasi data mentah General Ledger.</p>
+                    <span class="tool-link"><span class="host">gl-cleaner</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+                <a class="tool" data-cat="data" href="https://rek-kon-konverter.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-table"/></svg></span>
+                    <h3>Rekening Koran Konverter</h3>
+                    <p>Mengonversi rekening koran bank menjadi tabel data yang rapi.</p>
+                    <span class="tool-link"><span class="host">rek-kon-konverter</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
             </div>
-        </div>
+        </section>
 
-        <div class="glass-card rounded-3xl border border-white/50 dark:border-slate-700 overflow-hidden transition-all duration-300 shadow-lg dark:shadow-none bg-white/40 dark:bg-slate-800/50" data-aos="fade-up" data-aos-delay="300">
-            
-            <button onclick="toggleSection('confirmation-content', 'confirmation-icon')" class="w-full p-6 flex items-center justify-between bg-white/40 dark:bg-slate-800/40 hover:bg-white/60 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-left focus:outline-none">
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-emerald-900/20">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">Confirmation Maker</h2>
-                        <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 mt-1">Tools untuk membuat konfirmasi piutang, bank, dan utang secara otomatis.</p>
-                    </div>
-                </div>
-                <i id="confirmation-icon" class="fas fa-chevron-down text-slate-400 text-xl transition-transform duration-300"></i>
-            </button>
-
-            <div id="confirmation-content" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white/30 dark:bg-slate-900/30">
-                <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-white/20 dark:border-slate-700">
-
-                    <div class="bg-white/70 dark:bg-slate-800 p-6 rounded-2xl border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-xl">
-                                <i class="fas fa-file-contract"></i>
-                            </div>
-                            <span class="text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">PIUTANG</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Konfirmasi Piutang</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow leading-relaxed">Aplikasi untuk membuat dan mengelola konfirmasi piutang.</p>
-                        <div class="flex gap-2">
-                            <a href="https://konfirmasi-piutang-app.vercel.app/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-all">
-                                Buka Apps <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/70 dark:bg-slate-800 p-6 rounded-2xl border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-300 flex items-center justify-center text-xl">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <span class="text-xs font-bold bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 px-3 py-1 rounded-full border border-teal-200 dark:border-teal-800">BANK</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Konfirmasi Bank</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow leading-relaxed">Aplikasi untuk membuat dan mengelola konfirmasi saldo bank.</p>
-                        <div class="flex gap-2">
-                            <a href="https://konfirmasi-bank-app.vercel.app/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-teal-600 text-white font-medium hover:bg-teal-700 transition-all">
-                                Buka Apps <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/70 dark:bg-slate-800 p-6 rounded-2xl border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-300 flex items-center justify-center text-xl">
-                                <i class="fas fa-hand-holding-usd"></i>
-                            </div>
-                            <span class="text-xs font-bold bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 px-3 py-1 rounded-full border border-orange-200 dark:border-orange-800">UTANG</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Konfirmasi Utang</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow leading-relaxed">Aplikasi untuk membuat dan mengelola konfirmasi utang.</p>
-                        <div class="flex gap-2">
-                            <a href="https://konfirmasi-utang-app.vercel.app/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-orange-500 text-white font-medium hover:bg-orange-600 transition-all">
-                                Buka Apps <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+        <section class="group" aria-labelledby="grp-konf">
+            <div class="group-head">
+                <span class="dot" data-cat="konf"></span>
+                <h2 id="grp-konf">Konfirmasi</h2>
+                <span class="group-count">3 alat</span>
             </div>
-        </div>
+            <div class="grid">
+                <a class="tool" data-cat="konf" href="https://konfirmasi-piutang-app.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-filecheck"/></svg></span>
+                    <h3>Konfirmasi Piutang</h3>
+                    <p>Membuat dan mengelola surat konfirmasi piutang secara otomatis.</p>
+                    <span class="tool-link"><span class="host">konfirmasi-piutang</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+                <a class="tool" data-cat="konf" href="https://konfirmasi-utang-app.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-note"/></svg></span>
+                    <h3>Konfirmasi Utang</h3>
+                    <p>Membuat dan mengelola surat konfirmasi utang secara otomatis.</p>
+                    <span class="tool-link"><span class="host">konfirmasi-utang</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+                <a class="tool" data-cat="konf" href="https://konfirmasi-bank-app.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-bank"/></svg></span>
+                    <h3>Konfirmasi Bank</h3>
+                    <p>Membuat dan mengelola konfirmasi saldo bank secara otomatis.</p>
+                    <span class="tool-link"><span class="host">konfirmasi-bank</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+            </div>
+        </section>
 
-    </section>
+        <section class="group" aria-labelledby="grp-pajak">
+            <div class="group-head">
+                <span class="dot" data-cat="pajak"></span>
+                <h2 id="grp-pajak">Pajak &amp; Aktuaria</h2>
+                <span class="group-count">2 alat</span>
+            </div>
+            <div class="grid">
+                <a class="tool" data-cat="pajak" href="https://merge-faktur-pajak-kkp.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-layers"/></svg></span>
+                    <h3>Merger Faktur Pajak</h3>
+                    <p>Menggabungkan banyak file faktur pajak menjadi satu rekap.</p>
+                    <span class="tool-link"><span class="host">merge-faktur-pajak-kkp</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+                <a class="tool" data-cat="pajak" href="https://puc-v2.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-calc"/></svg></span>
+                    <h3>Imbalan Pasca Kerja (PUC)</h3>
+                    <p>Perhitungan imbalan pasca kerja metode Projected Unit Credit.</p>
+                    <span class="tool-link"><span class="host">puc-v2</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+            </div>
+        </section>
+    </main>
 
-    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 mt-auto transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-600 dark:text-slate-400 font-medium">© <span id="year"></span> KAP Kuncara Budi Santosa & Rekan</p>
-            <p class="text-slate-400 dark:text-slate-600 text-sm mt-2">Cabang Samarinda • Internal Development Team</p>
-            <p class="text-slate-400 dark:text-slate-600 text-sm mt-2">Viany Ramadhany</p>
-        </div>
+    <footer class="site-foot">
+        <p class="foot-name">KAP Kuncara Budi Santosa &amp; Rekan</p>
+        <p class="foot-meta">Cabang Samarinda · Internal Development Team</p>
+        <p class="foot-meta">© <span id="year"></span> · Dikembangkan oleh Viany Ramadhany</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    
     <script src="script.js"></script>
-    
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registered: ', registration.scope);
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-            });
-        }
-    </script>
 </body>
 </html>
