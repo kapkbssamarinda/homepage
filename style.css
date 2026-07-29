@@ -26,6 +26,7 @@
     --cat-data: var(--navy);
     --cat-konf: var(--teal);
     --cat-pajak: var(--red);
+    --cat-tracker: var(--amber);
 
     /* Spacing (4/8 rhythm) */
     --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
@@ -244,6 +245,7 @@ main {
 [data-cat="data"].dot  { background: var(--cat-data); }
 [data-cat="konf"].dot  { background: var(--cat-konf); }
 [data-cat="pajak"].dot { background: var(--cat-pajak); }
+[data-cat="tracker"].dot { background: var(--cat-tracker); }
 
 /* ---------- Tool grid & cards ---------- */
 .grid {
@@ -267,6 +269,7 @@ main {
 .tool[data-cat="data"]  { --cat: var(--cat-data); }
 .tool[data-cat="konf"]  { --cat: var(--cat-konf); }
 .tool[data-cat="pajak"] { --cat: var(--cat-pajak); }
+.tool[data-cat="tracker"] { --cat: var(--cat-tracker); }
 
 .tool:hover {
     transform: translateY(-4px);
