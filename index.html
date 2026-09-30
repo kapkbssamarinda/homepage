@@ -48,6 +48,9 @@
         <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65M22 12.65l-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
         <symbol id="i-calc" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14v4M8 18h.01M12 18h.01"/></symbol>
         <symbol id="i-tracker" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 7v7M16 7v4M12 7v10"/></symbol>
+        <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-8M16 12h-8M11 16H8"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
     </svg>
 
     <div class="backdrop" aria-hidden="true"></div>
@@ -72,14 +75,26 @@
             <p class="hero-meta">Portal Internal · Tim Audit</p>
             <h1 class="hero-title">Alat kerja audit,<br>dalam satu tempat.</h1>
             <p class="hero-lede">
-                Sembilan aplikasi untuk mendukung efisiensi tim KAP Kuncara Budi Santosa &amp; Rekan —
+                Sepuluh aplikasi untuk mendukung efisiensi tim KAP Kuncara Budi Santosa &amp; Rekan —
                 dari tracking audit, sampling dan pembersihan data hingga konfirmasi dan perpajakan.
             </p>
         </section>
 
+        <div class="search-toolbar" role="search">
+            <div class="search-input-wrap">
+                <svg class="icon icon-sm search-icon" aria-hidden="true"><use href="#i-search"/></svg>
+                <input type="search" id="tool-search" class="search-input" placeholder="Cari alat audit (misal: sampling, piutang, pajak)..." aria-label="Cari alat audit" autocomplete="off" spellcheck="false">
+                <button type="button" id="search-clear" class="search-clear" aria-label="Hapus kata kunci pencarian" hidden>
+                    <svg class="icon icon-sm"><use href="#i-x"/></svg>
+                </button>
+                <kbd class="search-shortcut" title="Tekan '/' untuk mencari">/</kbd>
+            </div>
+            <div id="search-feedback" class="search-feedback" aria-live="polite"></div>
+        </div>
+
         <section class="group" aria-labelledby="grp-tracker">
             <div class="group-head">
-                <span class="dot" data-cat="tracker"></span>
+                <span class="cat-pill" data-cat="tracker">Tracking</span>
                 <h2 id="grp-tracker">Manajemen &amp; Tracking</h2>
                 <span class="group-count">1 alat</span>
             </div>
@@ -95,7 +110,7 @@
 
         <section class="group" aria-labelledby="grp-data">
             <div class="group-head">
-                <span class="dot" data-cat="data"></span>
+                <span class="cat-pill" data-cat="data">Data</span>
                 <h2 id="grp-data">Data &amp; Sampling</h2>
                 <span class="group-count">3 alat</span>
             </div>
@@ -123,7 +138,7 @@
 
         <section class="group" aria-labelledby="grp-konf">
             <div class="group-head">
-                <span class="dot" data-cat="konf"></span>
+                <span class="cat-pill" data-cat="konf">Konfirmasi</span>
                 <h2 id="grp-konf">Konfirmasi</h2>
                 <span class="group-count">3 alat</span>
             </div>
@@ -151,9 +166,9 @@
 
         <section class="group" aria-labelledby="grp-pajak">
             <div class="group-head">
-                <span class="dot" data-cat="pajak"></span>
+                <span class="cat-pill" data-cat="pajak">Pajak</span>
                 <h2 id="grp-pajak">Pajak &amp; Aktuaria</h2>
-                <span class="group-count">2 alat</span>
+                <span class="group-count">3 alat</span>
             </div>
             <div class="grid">
                 <a class="tool" data-cat="pajak" href="https://merge-faktur-pajak-kkp.vercel.app/" target="_blank" rel="noopener">
@@ -161,6 +176,12 @@
                     <h3>Merger Faktur Pajak</h3>
                     <p>Menggabungkan banyak file faktur pajak menjadi satu rekap.</p>
                     <span class="tool-link"><span class="host">merge-faktur-pajak-kkp</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
+                </a>
+                <a class="tool" data-cat="pajak" href="https://bupot-merger.vercel.app/" target="_blank" rel="noopener">
+                    <span class="tool-icon"><svg class="icon"><use href="#i-receipt"/></svg></span>
+                    <h3>Merger Bupot</h3>
+                    <p>Menggabungkan banyak file bukti potong pajak menjadi satu rekap.</p>
+                    <span class="tool-link"><span class="host">bupot-merger</span><span class="btn-open">Buka <svg class="icon icon-sm arrow"><use href="#i-arrow"/></svg></span></span>
                 </a>
                 <a class="tool" data-cat="pajak" href="https://puc-v2.vercel.app/" target="_blank" rel="noopener">
                     <span class="tool-icon"><svg class="icon"><use href="#i-calc"/></svg></span>
@@ -170,6 +191,12 @@
                 </a>
             </div>
         </section>
+
+        <div id="no-results" class="no-results" hidden>
+            <p class="no-results-title">Tidak ada alat audit yang cocok</p>
+            <p class="no-results-desc">Coba gunakan kata kunci lain seperti <em>sampling</em>, <em>gl</em>, <em>piutang</em>, atau <em>pajak</em>.</p>
+            <button type="button" id="reset-search" class="btn-reset">Reset Pencarian</button>
+        </div>
     </main>
 
     <footer class="site-foot">
