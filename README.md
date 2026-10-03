@@ -1,6 +1,6 @@
 # Portal Alat Audit — KAP Kuncara Budi Santosa & Rekan (Samarinda)
 
-![KAP Logo](asset/icon/LOGO.png)
+![Logo KAP GWA](asset/icon/logo_gwa.png)
 
 > **Dokumentasi Internal Proyek**  
 > *Portal pusat akses (hub) satu pintu untuk seluruh ekosistem aplikasi dan alat bantu audit digital KAP Kuncara Budi Santosa & Rekan Cabang Samarinda.*
@@ -81,7 +81,8 @@ homepage/
 │   └── icon/
 │       ├── icon-192.png          # Favicon & icon PWA (192x192 px)
 │       ├── icon-512.png          # Icon splash screen PWA (512x512 px)
-│       ├── LOGO.png              # Logo identitas utama KAP KBS Samarinda
+│       ├── logo_gwa.png          # Logo utama KAP GWA
+│       ├── LOGO.png              # Logo identitas KAP KBS
 │       └── logo tanpa teks.png   # Versi logo tanpa teks tipografi
 ├── index.html                    # Halaman portal utama & markup semantic SVG sprite
 ├── manifest.json                 # Manifest metadata Progressive Web App (PWA)
@@ -162,7 +163,7 @@ Untuk asisten AI atau developer yang ingin menambahkan alat/tool baru di sesi be
 
 ## 👥 Tim & Pengembang
 
-* **Instansi:** Kantor Akuntan Publik (KAP) Kuncara Budi Santosa & Rekan — Cabang Samarinda
+* **Instansi:** Kantor Akuntan Publik (KAP) Griselda Wisnu dan Arum — Cabang Samarinda
 * **Tim:** Internal Development Team
 * **Kontributor / Lead Developer:** Viany Ramadhany
 * **Lisensi / Hak Cipta:** © Hak Cipta Dilindungi. Internal Use Only.

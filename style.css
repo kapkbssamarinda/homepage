@@ -149,8 +149,13 @@ a { color: inherit; text-decoration: none; }
     transition: background-color .25s var(--ease), border-color .25s var(--ease);
 }
 .brand { display: inline-flex; align-items: center; }
-.brand-logo { height: 56px; width: auto; }
-@media (max-width: 560px) { .brand-logo { height: 44px; } }
+.brand-logo {
+    height: 52px;
+    width: auto;
+    border-radius: var(--radius-sm);
+    object-fit: contain;
+}
+@media (max-width: 560px) { .brand-logo { height: 42px; } }
 .head-actions { display: flex; align-items: center; gap: var(--sp-2); }
 
 .chip {
