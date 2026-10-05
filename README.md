@@ -1,22 +1,22 @@
-# Portal Alat Audit — KAP Kuncara Budi Santosa & Rekan (Samarinda)
+# Portal Alat Audit — KAP Griselda Wisnu & Arum (Samarinda)
 
 ![Logo KAP GWA](asset/icon/logo_gwa.png)
 
 > **Dokumentasi Internal Proyek**  
-> *Portal pusat akses (hub) satu pintu untuk seluruh ekosistem aplikasi dan alat bantu audit digital KAP Kuncara Budi Santosa & Rekan Cabang Samarinda.*
+> *Portal pusat akses (hub) satu pintu untuk seluruh ekosistem aplikasi dan alat bantu audit digital KAP Griselda Wisnu & Arum Cabang Samarinda.*
 
 ---
 
 ## 🌐 Akses Langsung
 * **Production URL (GitHub Pages):** [https://kapkbssamarinda.github.io/homepage/](https://kapkbssamarinda.github.io/homepage/)
 * **Repository GitHub:** [https://github.com/kapkbssamarinda/homepage](https://github.com/kapkbssamarinda/homepage)
-* **Lokasi Kantor:** [KAP KBS Cabang Samarinda (Google Maps)](https://maps.app.goo.gl/Us9m17vRAyxCeR8V7)
+* **Lokasi Kantor:** [KAP GWA Cabang Samarinda (Google Maps)](https://maps.app.goo.gl/Us9m17vRAyxCeR8V7)
 
 ---
 
 ## 📖 Ringkasan Proyek
 
-Repositori ini berisi kode sumber untuk **Portal Halaman Landas (Landing Hub)** internal tim audit KAP Kuncara Budi Santosa & Rekan Cabang Samarinda. Portal ini dirancang khusus agar tim auditor dapat mengakses berbagai alat bantu kerja (Audit Tools berbasis web) secara cepat, terorganisir, dan terstandarisasi.
+Repositori ini berisi kode sumber untuk **Portal Halaman Landas (Landing Hub)** internal tim audit KAP Griselda Wisnu & Arum Cabang Samarinda. Portal ini dirancang khusus agar tim auditor dapat mengakses berbagai alat bantu kerja (Audit Tools berbasis web) secara cepat, terorganisir, dan terstandarisasi.
 
 ### Karakteristik & Filosofi Desain:
 * **Anti-AI Slop UI System:** Menolak pola klise AI (tanpa gradasi ungu-cyan generik, tanpa floating neon glow, tanpa blurred orb di dark mode, dan tanpa dot status semu). Mengedepankan *Deep Charcoal/Slate Audit Palette* dengan permukaan matte solid, elevasi taktil bertingkat, dan kontras teks WCAG AAA (~15:1).
@@ -163,7 +163,7 @@ Untuk asisten AI atau developer yang ingin menambahkan alat/tool baru di sesi be
 
 ## 👥 Tim & Pengembang
 
-* **Instansi:** Kantor Akuntan Publik (KAP) Griselda Wisnu dan Arum — Cabang Samarinda
+* **Instansi:** Kantor Akuntan Publik (KAP) Griselda Wisnu & Arum — Cabang Samarinda
 * **Tim:** Internal Development Team
 * **Kontributor / Lead Developer:** Viany Ramadhany
 * **Lisensi / Hak Cipta:** © Hak Cipta Dilindungi. Internal Use Only.
